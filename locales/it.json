@@ -1,0 +1,274 @@
+{
+  "_meta": { "name": "Italiano" },
+  "app": {
+    "title": "Lumen",
+    "subtitle": "Launcher multi-account",
+    "version": "Versione {version}"
+  },
+  "nav": {
+    "home": "Home",
+    "accounts": "Account",
+    "instances": "Istanze",
+    "settings": "Impostazioni"
+  },
+  "common": {
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "ok": "OK",
+    "retry": "Riprova",
+    "back": "Indietro",
+    "save": "Salva"
+  },
+  "home": {
+    "title": "Home",
+    "subtitle": "Riprendi da dove avevi lasciato o scopri qualcosa di nuovo.",
+    "search_hint": "Cerca giochi, oppure incolla il link di un gioco / ID place",
+    "clear_search": "Cancella ricerca",
+    "results_for": "Risultati per \"{query}\"",
+    "open_place": "Apri place {id}",
+    "searching": "Ricerca in corso…",
+    "no_results": "Nessun gioco trovato",
+    "no_results_hint": "Prova un altro nome o controlla come l'hai scritto.",
+    "result_count": { "one": "{count} gioco", "other": "{count} giochi" },
+    "recent": "Giochi recenti",
+    "recent_empty": "I giochi che avvii da qui compariranno in questo elenco.",
+    "favorites": "Preferiti",
+    "for_you": "Per Te",
+    "for_you_personal": "In base ai tuoi giochi",
+    "for_you_popular": "Popolari ora",
+    "refresh": "Aggiorna",
+    "loading": "Caricamento suggerimenti…",
+    "for_you_empty": "Nessun suggerimento disponibile al momento."
+  },
+  "games": {
+    "players_one": "{count} in gioco",
+    "players_other": "{count} in gioco",
+    "rating_short": "{value}% positivi",
+    "by": "di {creator}",
+    "open": "Apri",
+    "favorite": "Aggiungi ai preferiti",
+    "unfavorite": "Rimuovi dai preferiti",
+    "remove_recent": "Rimuovi dai giochi recenti"
+  },
+  "detail": {
+    "loading": "Caricamento dettagli del gioco…",
+    "description": "Descrizione",
+    "playing": "In gioco ora",
+    "visits": "Visite",
+    "rating": "Valutazione",
+    "updated": "Aggiornato",
+    "max_players": "Giocatori per server",
+    "genre": "Genere",
+    "play_section": "Gioca",
+    "no_accounts": "Aggiungi un account Roblox per giocare dal launcher.",
+    "account": "Account",
+    "in_game": "In gioco",
+    "play": "Gioca",
+    "instances": "{active} di {max} istanze in esecuzione"
+  },
+  "accounts": {
+    "title": "Account",
+    "subtitle": "I tuoi account Roblox. Ognuno può girare in un'istanza separata.",
+    "empty_title": "Ancora nessun account",
+    "empty_body": "Aggiungi un account: confermi l'accesso su roblox.com nel tuo browser, il launcher non vede mai la tua password.",
+    "add": "Aggiungi account",
+    "login_in_progress": "Accesso in corso…",
+    "verify_all": "Verifica sessioni",
+    "import": "Importa",
+    "export": "Esporta",
+    "relogin": "Accedi di nuovo",
+    "edit": "Modifica account",
+    "move_up": "Sposta su",
+    "move_down": "Sposta giù",
+    "delete": "Elimina",
+    "enable": "Attiva account",
+    "disable": "Disattiva account",
+    "delete_confirm": {
+      "title": "Eliminare {name}?",
+      "body": "L'account e la sua sessione salvata vengono rimossi da questo launcher. Il tuo account Roblox non viene toccato."
+    },
+    "last_used": "usato {when}",
+    "security_note": "Le sessioni sono cifrate con la DPAPI di Windows e solo il tuo utente Windows su questo PC può leggerle. Le esportazioni contengono solo i nomi, mai le sessioni.",
+    "alias": "Soprannome (facoltativo)",
+    "color": "Colore",
+    "color_auto": "Automatico",
+    "state": {
+      "disabled": "Disattivato",
+      "in_game": "In gioco",
+      "valid": "Connesso",
+      "checking": "Verifica…",
+      "expired": "Sessione scaduta",
+      "needs_login": "Accesso richiesto",
+      "error": "Non verificato",
+      "unknown": "Non controllato"
+    },
+    "added": "Account {name} aggiunto.",
+    "refreshed": "Sessione di {name} aggiornata.",
+    "relogin_other": "Hai effettuato l'accesso come {name}, un account diverso: è stato aggiunto o aggiornato a parte.",
+    "exported": "Account esportati in {file} (senza sessioni).",
+    "imported": "{count} account importati. Accedi con ciascuno per usarlo.",
+    "import_invalid": "Questo file non è un'esportazione di account valida."
+  },
+  "instances": {
+    "title": "Istanze",
+    "subtitle": "Tutti i client Roblox avviati dal launcher.",
+    "summary": "{active} di {max} attive",
+    "single_mode": "Modalità istanza singola",
+    "clear_finished": "Rimuovi terminate",
+    "empty_title": "Nessuna istanza attiva",
+    "empty_body": "Apri un gioco dalla Home e premi Gioca per avviare un'istanza.",
+    "col": {
+      "account": "Account",
+      "game": "Gioco",
+      "status": "Stato",
+      "started": "Avviata",
+      "pid": "PID"
+    },
+    "status": {
+      "launching": "In avvio",
+      "running": "In gioco",
+      "ended": "Terminata",
+      "failed": "Non riuscita"
+    },
+    "close": "Chiudi istanza",
+    "close_confirm": {
+      "title": "Chiudere questa istanza?",
+      "body": "La finestra di Roblox di {account} verrà chiusa. I progressi non salvati nel gioco potrebbero andare persi."
+    }
+  },
+  "launch": {
+    "starting": "Avvio di {game} con {account}…",
+    "started": "Roblox avviato.",
+    "details_missing": "I dettagli del gioco sono ancora in caricamento. Riprova tra un momento.",
+    "same_account": {
+      "title": "Account già in gioco",
+      "body": "Questo account ha già un'istanza in esecuzione. Avviandone un'altra Roblox potrebbe disconnettere la prima. Continuare comunque?",
+      "confirm": "Avvia comunque"
+    },
+    "not_installed": {
+      "title": "Roblox non è installato",
+      "download": "Scarica Roblox"
+    }
+  },
+  "login": {
+    "title": "Aggiungi un account Roblox",
+    "title_refresh": "Accedi di nuovo",
+    "requesting": "Richiedo a Roblox un codice di accesso…",
+    "step1": "Roblox si è aperto nel tuo browser. Se lì non sei connesso, accedi come al solito con l'account da aggiungere.",
+    "step2": "Inserisci questo codice nella pagina:",
+    "step3": "Conferma \"Vuoi accedere a…\" su roblox.com. Il launcher se ne accorge da solo.",
+    "copy": "Copia codice",
+    "copied": "Codice copiato.",
+    "open_browser": "Riapri roblox.com",
+    "waiting_code": "In attesa che il codice venga inserito…",
+    "waiting_confirm": "Codice inserito per {name}: conferma l'accesso nel browser.",
+    "finishing": "Confermato, salvo la sessione…",
+    "expires": "Il codice scade tra {time}",
+    "close": "Chiudi",
+    "privacy": "La password la scrivi solo su roblox.com, mai nel launcher. La sessione ricevuta viene salvata cifrata su questo PC."
+  },
+  "tray": {
+    "open": "Apri Lumen",
+    "exit": "Esci",
+    "instances": "Istanze attive: {count}",
+    "still_running": "Il launcher resta attivo qui. Usa l'icona nella tray per aprirlo o uscire."
+  },
+  "error": {
+    "none": "Fatto.",
+    "network": "Impossibile raggiungere Roblox. Controlla la connessione a internet.",
+    "timeout": "Roblox ha impiegato troppo a rispondere. Riprova.",
+    "tls": "Non è stato possibile verificare la connessione sicura con Roblox.",
+    "rate_limited": "Troppe richieste a Roblox. Attendi un minuto e riprova.",
+    "api": "Roblox ha dato una risposta inattesa. Riprova più tardi.",
+    "parse": "Roblox ha restituito dati che il launcher non riesce a leggere.",
+    "unauthorized": "La sessione di questo account è scaduta. Accedi di nuovo.",
+    "crypto": "Impossibile decifrare la sessione salvata. Accedi di nuovo con questo account.",
+    "not_installed": "Roblox non è installato su questo PC. Installalo da roblox.com/download.",
+    "instance_limit": "Limite di istanze raggiunto ({max}). Chiudi un'istanza o alza il limite nelle Impostazioni.",
+    "instance_limit_single": "Roblox è già in esecuzione. Chiudilo, oppure attiva le istanze multiple nelle Impostazioni.",
+    "account_busy": "Questo account ha già un'istanza in esecuzione.",
+    "account_disabled": "Questo account è disattivato. Attivalo nella schermata Account.",
+    "launch_failed": "Roblox non si è avviato. Verifica che sia installato e aggiornato.",
+    "multi_unavailable": "Chiudi prima tutte le finestre di Roblox: le istanze multiple si possono attivare solo prima che Roblox parta.",
+    "login_expired": "Il codice di accesso è scaduto o non è più valido. Riprova per ottenerne uno nuovo.",
+    "login_challenge": "Roblox ha chiesto una verifica aggiuntiva per questo accesso. Riprova tra qualche minuto.",
+    "cancelled": "Annullato.",
+    "io": "Impossibile scrivere i file dati del launcher. Controlla spazio su disco e permessi.",
+    "d3d": "Impossibile inizializzare Direct3D 11. Aggiorna i driver della scheda video."
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "subtitle": "Le modifiche vengono salvate automaticamente.",
+    "section": {
+      "general": "Generale",
+      "appearance": "Aspetto",
+      "startup": "Avvio",
+      "instances": "Istanze",
+      "data": "Dati e cache",
+      "about": "Informazioni"
+    },
+    "language": { "label": "Lingua", "desc": "Si applica subito, senza riavviare." },
+    "theme": {
+      "label": "Tema",
+      "desc": "\"Segui il sistema\" usa la modalità colore delle app di Windows.",
+      "dark": "Scuro",
+      "light": "Chiaro",
+      "system": "Segui il sistema"
+    },
+    "animations": { "label": "Animazioni", "desc": "Transizioni fluide tra le schermate e sui pulsanti." },
+    "startup": {
+      "restore": { "label": "Riapri l'ultima schermata", "desc": "Riparte dalla schermata che usavi quando hai chiuso il launcher." },
+      "autostart": { "label": "Avvia con Windows", "desc": "Si avvia automaticamente all'accesso a Windows." },
+      "minimized": { "label": "Avvia ridotto nella tray", "desc": "Quando si avvia con Windows, resta nell'area di notifica." },
+      "close_to_tray": { "label": "Chiudi nella tray", "desc": "Il pulsante di chiusura nasconde la finestra invece di uscire." }
+    },
+    "instances": {
+      "multi": {
+        "label": "Consenti più istanze",
+        "desc": "Permette di avere più finestre di Roblox aperte insieme.",
+        "warning": "Roblox non supporta ufficialmente più client contemporanei. Usala a tuo rischio: leggi il README prima di attivarla."
+      },
+      "max": { "label": "Istanze simultanee massime", "desc": "Gli avvii oltre il limite vengono bloccati con un avviso.", "format": "%d" },
+      "delay": { "label": "Ritardo tra gli avvii", "desc": "Attendere tra un'istanza e l'altra evita conflitti all'avvio.", "format": "%d ms" }
+    },
+    "data": {
+      "thumbs": { "label": "Dimensione cache miniature", "desc": "Oltre questo limite vengono eliminate le miniature più vecchie.", "format": "%d MB" },
+      "recent": { "label": "Giochi recenti da ricordare", "desc": "Quanti giochi conserva l'elenco dei recenti.", "format": "%d" },
+      "api_ttl": { "label": "Durata cache API", "desc": "Per quanto tempo ricerca e dettagli dei giochi vengono riusati prima di aggiornarli.", "format": "%d min" },
+      "open_folder": "Apri cartella dati",
+      "clear_cache": "Svuota cache",
+      "clear_history": "Cancella giochi recenti",
+      "reset": "Reset completo",
+      "history_confirm": {
+        "title": "Cancellare i giochi recenti?",
+        "body": "L'elenco dei recenti viene svuotato e Per Te torna a mostrare i giochi popolari."
+      },
+      "reset_confirm": {
+        "title": "Ripristinare tutto?",
+        "body": "Rimuove tutti gli account e le loro sessioni, i giochi recenti, i preferiti e la cache, e ripristina le impostazioni predefinite. Non si può annullare."
+      }
+    },
+    "about": {
+      "version": "Versione",
+      "license": "Licenza",
+      "license_value": "MIT",
+      "readme": "Apri README",
+      "disclaimer": "Non affiliato, approvato o sponsorizzato da Roblox Corporation. \"Roblox\" è un marchio di Roblox Corporation."
+    }
+  },
+  "toast": {
+    "settings_corrupt": "Il file delle impostazioni era danneggiato ed è stato ripristinato ai valori predefiniti. Backup salvato come {file}.",
+    "file_corrupt": "{file} era danneggiato: è stato conservato un backup e l'elenco riparte vuoto.",
+    "settings_save_failed": "Impossibile salvare le impostazioni. Controlla spazio su disco e permessi della cartella dati.",
+    "autostart_failed": "Impossibile modificare l'avvio automatico di Windows.",
+    "reset_done": "È stato ripristinato tutto.",
+    "history_cleared": "Giochi recenti cancellati.",
+    "cache_cleared": "Cache svuotata."
+  },
+  "time": {
+    "just_now": "proprio ora",
+    "minutes_ago": { "one": "{count} minuto fa", "other": "{count} minuti fa" },
+    "hours_ago": { "one": "{count} ora fa", "other": "{count} ore fa" },
+    "days_ago": { "one": "{count} giorno fa", "other": "{count} giorni fa" }
+  }
+}

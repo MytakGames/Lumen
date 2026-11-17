@@ -1,0 +1,274 @@
+{
+  "_meta": { "name": "English" },
+  "app": {
+    "title": "Lumen",
+    "subtitle": "Multi-account launcher",
+    "version": "Version {version}"
+  },
+  "nav": {
+    "home": "Home",
+    "accounts": "Accounts",
+    "instances": "Instances",
+    "settings": "Settings"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "ok": "OK",
+    "retry": "Retry",
+    "back": "Back",
+    "save": "Save"
+  },
+  "home": {
+    "title": "Home",
+    "subtitle": "Pick up where you left off, or find something new.",
+    "search_hint": "Search games, or paste a game link / place ID",
+    "clear_search": "Clear search",
+    "results_for": "Results for \"{query}\"",
+    "open_place": "Open place {id}",
+    "searching": "Searching…",
+    "no_results": "No games found",
+    "no_results_hint": "Try a different name or check the spelling.",
+    "result_count": { "one": "{count} game", "other": "{count} games" },
+    "recent": "Recent games",
+    "recent_empty": "Games you launch from here will appear in this list.",
+    "favorites": "Favorites",
+    "for_you": "For You",
+    "for_you_personal": "Based on your games",
+    "for_you_popular": "Popular right now",
+    "refresh": "Refresh",
+    "loading": "Loading suggestions…",
+    "for_you_empty": "No suggestions available right now."
+  },
+  "games": {
+    "players_one": "{count} playing",
+    "players_other": "{count} playing",
+    "rating_short": "{value}% liked",
+    "by": "by {creator}",
+    "open": "Open",
+    "favorite": "Add to favorites",
+    "unfavorite": "Remove from favorites",
+    "remove_recent": "Remove from recent games"
+  },
+  "detail": {
+    "loading": "Loading game details…",
+    "description": "Description",
+    "playing": "Playing now",
+    "visits": "Visits",
+    "rating": "Rating",
+    "updated": "Updated",
+    "max_players": "Server size",
+    "genre": "Genre",
+    "play_section": "Play",
+    "no_accounts": "Add a Roblox account to play from the launcher.",
+    "account": "Account",
+    "in_game": "In game",
+    "play": "Play",
+    "instances": "{active} of {max} instances running"
+  },
+  "accounts": {
+    "title": "Accounts",
+    "subtitle": "Your Roblox accounts. Each one can run in its own instance.",
+    "empty_title": "No accounts yet",
+    "empty_body": "Add an account: you confirm the sign-in on roblox.com in your browser, the launcher never sees your password.",
+    "add": "Add account",
+    "login_in_progress": "Signing in…",
+    "verify_all": "Check sessions",
+    "import": "Import",
+    "export": "Export",
+    "relogin": "Sign in again",
+    "edit": "Edit account",
+    "move_up": "Move up",
+    "move_down": "Move down",
+    "delete": "Delete",
+    "enable": "Enable account",
+    "disable": "Disable account",
+    "delete_confirm": {
+      "title": "Delete {name}?",
+      "body": "The account and its saved session are removed from this launcher. Your Roblox account itself is not affected."
+    },
+    "last_used": "last used {when}",
+    "security_note": "Sessions are encrypted with Windows DPAPI and can only be read by your Windows user on this PC. Exports contain names only, never sessions.",
+    "alias": "Nickname (optional)",
+    "color": "Color",
+    "color_auto": "Automatic",
+    "state": {
+      "disabled": "Disabled",
+      "in_game": "In game",
+      "valid": "Signed in",
+      "checking": "Checking…",
+      "expired": "Session expired",
+      "needs_login": "Sign-in needed",
+      "error": "Not verified",
+      "unknown": "Not checked"
+    },
+    "added": "Account {name} added.",
+    "refreshed": "Session of {name} refreshed.",
+    "relogin_other": "You signed in as {name}, a different account: it was added or refreshed separately.",
+    "exported": "Accounts exported to {file} (without sessions).",
+    "imported": "{count} account(s) imported. Sign in to each one to use it.",
+    "import_invalid": "This file is not a valid account export."
+  },
+  "instances": {
+    "title": "Instances",
+    "subtitle": "Every Roblox client started from the launcher.",
+    "summary": "{active} of {max} active",
+    "single_mode": "Single instance mode",
+    "clear_finished": "Clear finished",
+    "empty_title": "Nothing running",
+    "empty_body": "Open a game from Home and press Play to start an instance.",
+    "col": {
+      "account": "Account",
+      "game": "Game",
+      "status": "Status",
+      "started": "Started",
+      "pid": "PID"
+    },
+    "status": {
+      "launching": "Starting",
+      "running": "Running",
+      "ended": "Closed",
+      "failed": "Failed"
+    },
+    "close": "Close instance",
+    "close_confirm": {
+      "title": "Close this instance?",
+      "body": "The Roblox window of {account} will be closed. Unsaved progress in the game may be lost."
+    }
+  },
+  "launch": {
+    "starting": "Starting {game} as {account}…",
+    "started": "Roblox started.",
+    "details_missing": "Game details are still loading. Try again in a moment.",
+    "same_account": {
+      "title": "Account already in game",
+      "body": "This account already has a running instance. Roblox may disconnect the first one if you start another. Continue anyway?",
+      "confirm": "Start anyway"
+    },
+    "not_installed": {
+      "title": "Roblox is not installed",
+      "download": "Download Roblox"
+    }
+  },
+  "login": {
+    "title": "Add a Roblox account",
+    "title_refresh": "Sign in again",
+    "requesting": "Getting a sign-in code from Roblox…",
+    "step1": "Roblox has opened in your browser. If you are not signed in there, sign in as usual with the account you want to add.",
+    "step2": "Enter this code on the page:",
+    "step3": "Confirm \"Do you want to log in to…\" on roblox.com. The launcher notices it on its own.",
+    "copy": "Copy code",
+    "copied": "Code copied.",
+    "open_browser": "Open roblox.com again",
+    "waiting_code": "Waiting for the code to be entered…",
+    "waiting_confirm": "Code entered for {name}: confirm the sign-in in your browser.",
+    "finishing": "Confirmed, saving the session…",
+    "expires": "The code expires in {time}",
+    "close": "Close",
+    "privacy": "Your password is only typed on roblox.com, never in the launcher. The session received is stored encrypted on this PC."
+  },
+  "tray": {
+    "open": "Open Lumen",
+    "exit": "Exit",
+    "instances": "Active instances: {count}",
+    "still_running": "The launcher is still running here. Use the tray icon to open it or exit."
+  },
+  "error": {
+    "none": "Done.",
+    "network": "Cannot reach Roblox. Check your internet connection.",
+    "timeout": "Roblox took too long to answer. Try again.",
+    "tls": "The secure connection to Roblox could not be verified.",
+    "rate_limited": "Too many requests to Roblox. Wait a minute and try again.",
+    "api": "Roblox returned an unexpected answer. Try again later.",
+    "parse": "Roblox returned data the launcher could not read.",
+    "unauthorized": "The session of this account has expired. Sign in again.",
+    "crypto": "The saved session could not be decrypted. Sign in again for this account.",
+    "not_installed": "Roblox is not installed on this PC. Install it from roblox.com/download.",
+    "instance_limit": "Instance limit reached ({max}). Close an instance or raise the limit in Settings.",
+    "instance_limit_single": "Roblox is already running. Close it, or enable multiple instances in Settings.",
+    "account_busy": "This account already has a running instance.",
+    "account_disabled": "This account is disabled. Enable it in Accounts.",
+    "launch_failed": "Roblox did not start. Make sure Roblox is installed and up to date.",
+    "multi_unavailable": "Close every Roblox window first: multiple instances can only be enabled before Roblox starts.",
+    "login_expired": "The sign-in code expired or is no longer valid. Try again to get a new one.",
+    "login_challenge": "Roblox asked for an extra verification for this sign-in. Try again in a few minutes.",
+    "cancelled": "Cancelled.",
+    "io": "Could not write the launcher data files. Check disk space and permissions.",
+    "d3d": "Could not initialise Direct3D 11. Update your graphics drivers."
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Changes are saved automatically.",
+    "section": {
+      "general": "General",
+      "appearance": "Appearance",
+      "startup": "Startup",
+      "instances": "Instances",
+      "data": "Data and cache",
+      "about": "About"
+    },
+    "language": { "label": "Language", "desc": "Applied immediately, no restart needed." },
+    "theme": {
+      "label": "Theme",
+      "desc": "\"Follow system\" uses the Windows app colour mode.",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "Follow system"
+    },
+    "animations": { "label": "Animations", "desc": "Smooth transitions between screens and on buttons." },
+    "startup": {
+      "restore": { "label": "Reopen last screen", "desc": "Start on the screen you were using when you closed the launcher." },
+      "autostart": { "label": "Start with Windows", "desc": "Launch automatically when you sign in to Windows." },
+      "minimized": { "label": "Start minimized to tray", "desc": "When started with Windows, stay in the notification area." },
+      "close_to_tray": { "label": "Close to tray", "desc": "The close button hides the window instead of quitting." }
+    },
+    "instances": {
+      "multi": {
+        "label": "Allow multiple instances",
+        "desc": "Lets several Roblox windows run at the same time.",
+        "warning": "Roblox does not officially support multiple clients. Use at your own risk: read the README before enabling it."
+      },
+      "max": { "label": "Maximum simultaneous instances", "desc": "Further launches are blocked with a warning.", "format": "%d" },
+      "delay": { "label": "Delay between launches", "desc": "Waiting between instances avoids conflicts at startup.", "format": "%d ms" }
+    },
+    "data": {
+      "thumbs": { "label": "Thumbnail cache size", "desc": "Oldest thumbnails are removed above this limit.", "format": "%d MB" },
+      "recent": { "label": "Recent games to keep", "desc": "How many games the Recent list remembers.", "format": "%d" },
+      "api_ttl": { "label": "API cache lifetime", "desc": "How long search and game details are reused before refreshing.", "format": "%d min" },
+      "open_folder": "Open data folder",
+      "clear_cache": "Clear cache",
+      "clear_history": "Clear recent games",
+      "reset": "Full reset",
+      "history_confirm": {
+        "title": "Clear recent games?",
+        "body": "The Recent list is emptied and For You goes back to popular games."
+      },
+      "reset_confirm": {
+        "title": "Reset everything?",
+        "body": "Removes all accounts and their sessions, recent games, favorites and cache, and restores default settings. This cannot be undone."
+      }
+    },
+    "about": {
+      "version": "Version",
+      "license": "License",
+      "license_value": "MIT",
+      "readme": "Open README",
+      "disclaimer": "Not affiliated with, endorsed by or sponsored by Roblox Corporation. \"Roblox\" is a trademark of Roblox Corporation."
+    }
+  },
+  "toast": {
+    "settings_corrupt": "The settings file was damaged and has been reset to defaults. A backup was saved as {file}.",
+    "file_corrupt": "{file} was damaged: a backup was kept and the list starts empty.",
+    "settings_save_failed": "Could not save settings. Check the disk space and permissions of the data folder.",
+    "autostart_failed": "Could not change the Windows startup setting.",
+    "reset_done": "Everything has been reset.",
+    "history_cleared": "Recent games cleared.",
+    "cache_cleared": "Cache cleared."
+  },
+  "time": {
+    "just_now": "just now",
+    "minutes_ago": { "one": "{count} minute ago", "other": "{count} minutes ago" },
+    "hours_ago": { "one": "{count} hour ago", "other": "{count} hours ago" },
+    "days_ago": { "one": "{count} day ago", "other": "{count} days ago" }
+  }
+}
