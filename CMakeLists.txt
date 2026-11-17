@@ -106,12 +106,12 @@ add_custom_command(TARGET RobloxLauncher POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_SOURCE_DIR}/locales $<TARGET_FILE_DIR:RobloxLauncher>/locales
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${CMAKE_SOURCE_DIR}/README.md $<TARGET_FILE_DIR:RobloxLauncher>/README.md
+            ${CMAKE_SOURCE_DIR}/README.md ${CMAKE_SOURCE_DIR}/README.it.md $<TARGET_FILE_DIR:RobloxLauncher>
     COMMENT "Copying locales and README")
 
 install(TARGETS RobloxLauncher RUNTIME DESTINATION .)
 install(DIRECTORY locales DESTINATION .)
-install(FILES README.md LICENSE DESTINATION .)
+install(FILES README.md README.it.md LICENSE DESTINATION .)
 
 # ---------------------------------------------------------------------------
 # Tests

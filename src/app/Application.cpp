@@ -31,9 +31,12 @@ COLORREF toColorRef(const ImVec4& c) {
     return RGB(static_cast<int>(c.x * 255.0f), static_cast<int>(c.y * 255.0f), static_cast<int>(c.z * 255.0f));
 }
 
-std::filesystem::path readmePath() {
-    const auto p = paths::executableDir() / L"README.md";
+// README.it.md for Italian, README.md (English) otherwise.
+std::filesystem::path readmePath(const std::string& language = "en") {
     std::error_code ec;
+    const auto dir = paths::executableDir();
+    if (language == "it" && std::filesystem::exists(dir / L"README.it.md", ec)) return dir / L"README.it.md";
+    const auto p = dir / L"README.md";
     return std::filesystem::exists(p, ec) ? p : std::filesystem::path{};
 }
 
@@ -193,7 +196,8 @@ void Application::bindContext() {
         notify({Notice::Level::Success, "toast.history_cleared", {}});
     };
     c.openDataFolder = [] { shellOpen(paths::dataDir().wstring()); };
-    if (!readmePath().empty()) c.openReadme = [] { shellOpen(readmePath().wstring()); };
+    if (!readmePath().empty())
+        c.openReadme = [this] { shellOpen(readmePath(settings_.language).wstring()); };
     c.openUrl = [](const char* url) { shellOpen(str::toWide(url)); };
     c.addAccount = [this] { startLogin({}); };
     c.reloginAccount = [this](const std::string& id) { startLogin(id); };

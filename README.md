@@ -1,82 +1,84 @@
 # Lumen
 
-**Lumen** è un launcher alternativo e non ufficiale per Roblox su Windows. Permette di tenere più account Roblox nello stesso posto e di avviare più client contemporaneamente, ognuno con il suo account. È scritto in C++17 con Dear ImGui.
+🇬🇧 **English** · 🇮🇹 [Italiano](README.it.md)
 
-> ⚠️ **Lumen non è affiliato, approvato o sponsorizzato da Roblox Corporation.** "Roblox" è un marchio di Roblox Corporation. Lumen non modifica il client di Roblox, non inietta codice e non aggira nessuna protezione del gioco: avvia il client ufficiale nello stesso modo in cui lo avvia il sito roblox.com.
+**Lumen** is an unofficial, alternative launcher for Roblox on Windows. It keeps several Roblox accounts in one place and can run several clients at the same time, each signed in to its own account. It is written in C++17 with Dear ImGui.
 
-| Home | Dettaglio gioco |
+> ⚠️ **Lumen is not affiliated with, endorsed by, or sponsored by Roblox Corporation.** "Roblox" is a trademark of Roblox Corporation. Lumen does not modify the Roblox client, inject code, or bypass any game protection: it starts the official client the same way the roblox.com website does.
+
+| Home | Game details |
 |---|---|
-| ![Home](docs/screenshots/home.png) | ![Dettaglio gioco](docs/screenshots/game_detail.png) |
+| ![Home](docs/screenshots/home.png) | ![Game details](docs/screenshots/game_detail.png) |
 
-| Account | Istanze | Impostazioni |
+| Accounts | Instances | Settings |
 |---|---|---|
-| ![Account](docs/screenshots/accounts.png) | ![Istanze](docs/screenshots/instances.png) | ![Impostazioni](docs/screenshots/settings.png) |
+| ![Accounts](docs/screenshots/accounts.png) | ![Instances](docs/screenshots/instances.png) | ![Settings](docs/screenshots/settings.png) |
 
-*Screenshot dello sviluppo: possono non corrispondere esattamente all'ultima versione.*
+*The screenshots use made-up demo accounts.*
 
 ---
 
-## 1. Funzionalità principali
+## 1. Features
 
-- **Più account**: aggiungi, rinomina (alias locale), colora, riordina, abilita o disabilita ed elimina gli account. L'export e l'import della lista contengono solo metadati e **mai** i cookie.
-- **Login sicuro dal browser**: Lumen mostra un codice e apre roblox.com nel browser predefinito, dove confermi l'accesso ("Accedi con un altro dispositivo"). Lumen non vede e non memorizza mai la password.
-- **Cookie cifrati**: il cookie di sessione è cifrato con la DPAPI di Windows e non compare mai nei log.
-- **Più istanze**: ogni gioco può partire con un account diverso, con un limite configurabile (1–10) e un ritardo tra un avvio e l'altro. La schermata Istanze mostra i client aperti e permette di chiuderli.
+- **Multiple accounts**: add, rename (local alias), color, reorder, enable or disable, and delete accounts. List export and import contain metadata only, **never** cookies.
+- **Secure browser sign-in**: Lumen shows a code and opens roblox.com in your default browser, where you confirm the sign-in ("Log in with another device"). Lumen never sees or stores your password.
+- **Encrypted cookies**: the session cookie is encrypted with Windows DPAPI and never written to the logs.
+- **Multiple instances**: each game can start with a different account, with a configurable limit (1–10) and a delay between launches. The Instances screen lists the running clients and can close them.
 - **Home**:
-  - **Giochi recenti**: con data dell'ultimo avvio; il massimo è configurabile e ogni gioco si può rimuovere.
-  - **Ricerca**: usa le API pubbliche di Roblox con un debounce di 300 ms e mostra miniatura, creatore, giocatori online e valutazione.
-  - **Per Te**: suggerimenti calcolati in locale (vedi sotto).
-- **Scheda gioco**: banner, descrizione, creatore, giocatori, valutazione e ultimo aggiornamento, con la scelta dell'account, il pulsante Gioca e i preferiti.
-- **Impostazioni**:
-  - lingua italiano/inglese, cambiabile al volo senza riavvio;
-  - tema scuro, chiaro o di sistema;
-  - avvio con Windows, avvio ridotto a icona, chiusura nell'area di notifica;
-  - opzioni per le istanze, la cache e la cronologia;
-  - reset completo.
-- **Robustezza**:
-  - rete non bloccante con cache, retry con backoff esponenziale e verifica TLS;
-  - scritture JSON atomiche, con backup dei file corrotti;
-  - log a rotazione.
+  - **Recent games**: with the last-played date; the maximum is configurable and each game can be removed.
+  - **Search**: uses Roblox's public APIs with a 300 ms debounce and shows thumbnail, creator, players online and rating.
+  - **For You**: suggestions computed locally (see below).
+- **Game page**: banner, description, creator, players, rating and last update, with the account picker, the Play button and favorites.
+- **Settings**:
+  - English/Italian, switchable without a restart;
+  - dark, light or system theme;
+  - start with Windows, start minimized, close to the notification area;
+  - instance, cache and history options;
+  - full reset.
+- **Robustness**:
+  - non-blocking networking with caching, exponential-backoff retries and TLS verification;
+  - atomic JSON writes, with a backup of corrupt files;
+  - rotating logs.
 
-### Come funziona "Per Te"
+### How "For You" works
 
-I suggerimenti si basano **solo sulla lista dei giochi recenti**, salvata in `recent_games.json`. Per ogni gioco vengono usati il genere, il creatore, quante volte l'hai avviato e quando l'hai avviato l'ultima volta. Ogni avvio pesa la metà ogni 14 giorni. Da questi dati Lumen calcola le tue preferenze per genere e per creatore e ordina i giochi popolari di Roblox in base a:
+Suggestions are based **only on the recent games list**, stored in `recent_games.json`. For each game Lumen uses the genre, the creator, how many times you played it and when you last played it. Each play counts half as much every 14 days. From this Lumen derives your genre and creator preferences and ranks popular Roblox games by:
 
-`3 × affinità di genere + 2 × affinità di creatore + 0,6 × popolarità + 0,4 × valutazione`
+`3 × genre affinity + 2 × creator affinity + 0.6 × popularity + 0.4 × rating`
 
-I giochi già giocati vengono esclusi. Se la cronologia è vuota, Lumen mostra semplicemente i giochi più popolari. Nessun dato viene inviato a terzi.
+Games you already played are left out. With an empty history Lumen simply shows the most popular games. No data is sent to third parties.
 
-**Per resettarli** scegli **Impostazioni → Dati e cache → Cancella giochi recenti**, oppure cancella `recent_games.json` (vedi la sezione 5).
+**To reset it**, choose **Settings → Data and cache → Clear recent games**, or delete `recent_games.json` (see section 5).
 
 ---
 
-## 2. Requisiti
+## 2. Requirements
 
-**Per usarlo**
-- Windows 10 o 11 a 64 bit.
-- Roblox installato, cioè il protocollo `roblox-player:` registrato. Funziona anche con launcher come Bloxstrap.
+**To use it**
+- Windows 10 or 11, 64-bit.
+- Roblox installed, i.e. the `roblox-player:` protocol registered. Launchers such as Bloxstrap work too.
 
-**Per compilarlo**
+**To build it**
 - CMake ≥ 3.20.
-- Un compilatore C++17:
-  - **MSVC**: Visual Studio 2022 con il carico di lavoro "Sviluppo di applicazioni desktop con C++";
-  - oppure **MinGW-w64**: GCC ≥ 12, testato con WinLibs GCC 16 UCRT, più Ninja.
-- Connessione a Internet al primo configure: le dipendenze vengono scaricate con `FetchContent`.
-  - Dear ImGui 1.91.5, con backend Win32 + DirectX 11;
+- A C++17 compiler:
+  - **MSVC**: Visual Studio 2022 with the "Desktop development with C++" workload;
+  - or **MinGW-w64**: GCC ≥ 12 (tested with WinLibs GCC 16 UCRT), plus Ninja.
+- An Internet connection on the first configure: dependencies are fetched with `FetchContent`.
+  - Dear ImGui 1.91.5, with the Win32 + DirectX 11 backends;
   - nlohmann/json 3.11.3;
-  - stb_image, per decodificare le miniature PNG e JPEG;
-  - doctest 2.4.11, per i test.
-- Le librerie di sistema (WinHTTP, DPAPI/crypt32, DirectX 11, DWM) fanno già parte di Windows: non serve installare nient'altro.
+  - stb_image, to decode PNG and JPEG thumbnails;
+  - doctest 2.4.11, for the tests.
+- The system libraries (WinHTTP, DPAPI/crypt32, DirectX 11, DWM) ship with Windows: nothing else to install.
 
 ---
 
-## 3. Compilazione
+## 3. Building
 
-Esegui i comandi dalla cartella del progetto.
+Run the commands from the project folder.
 
 ### MinGW (Ninja)
 
-Con WinLibs, ad esempio: `winget install BrechtSanders.WinLibs.POSIX.UCRT Kitware.CMake Ninja-build.Ninja`.
+For example with WinLibs: `winget install BrechtSanders.WinLibs.POSIX.UCRT Kitware.CMake Ninja-build.Ninja`.
 
 ```bash
 cmake --preset mingw-release
@@ -86,11 +88,11 @@ cmake --preset mingw-release
 cmake --build --preset mingw-release
 ```
 
-L'eseguibile si trova in `build/mingw-release/Lumen.exe`. Il runtime è collegato staticamente, quindi non servono DLL di MinGW. Per la versione di debug usa il preset `mingw-debug`.
+The executable is `build/mingw-release/Lumen.exe`. The runtime is linked statically, so no MinGW DLLs are needed. Use the `mingw-debug` preset for a debug build.
 
 ### MSVC (Visual Studio 2022)
 
-Da un "Developer PowerShell for VS 2022", oppure da un terminale normale: il generatore trova Visual Studio da solo.
+From a "Developer PowerShell for VS 2022", or a regular terminal: the generator finds Visual Studio by itself.
 
 ```bash
 cmake --preset msvc
@@ -100,149 +102,151 @@ cmake --preset msvc
 cmake --build --preset msvc --config Release
 ```
 
-L'eseguibile si trova in `build/msvc/Release/Lumen.exe`. In alternativa puoi aprire `build/msvc/RobloxLauncher.sln` in Visual Studio.
-*Nota: la build MSVC è configurata ma in questo ambiente è stata verificata solo con MinGW.*
+The executable is `build/msvc/Release/Lumen.exe`. You can also open `build/msvc/RobloxLauncher.sln` in Visual Studio.
+*Note: the MSVC build is configured but has only been verified with MinGW so far.*
 
-### Test
+### Tests
 
 ```bash
 ctest --test-dir build/mingw-release --output-on-failure
 ```
 
-I test unitari (doctest) coprono:
-- localizzazione: parità delle chiavi e dei segnaposto tra `it.json` ed `en.json`, plurali, formati di numeri e date;
-- impostazioni e scritture atomiche;
-- cifratura DPAPI e persistenza degli account;
-- parser delle API, login rapido e cookie;
-- cronologia, preferiti e suggerimenti;
-- costruzione dell'URI di avvio.
+The unit tests (doctest) cover:
+- localization: key and placeholder parity between `en.json` and `it.json`, plurals, number and date formats;
+- settings and atomic writes;
+- DPAPI encryption and account persistence;
+- API parsers, quick sign-in and cookies;
+- history, favorites and suggestions;
+- building the launch URI.
 
-### Distribuzione
+### Packaging
 
 ```bash
 cmake --install build/mingw-release --prefix dist/Lumen
 ```
 
-Il comando copia `Lumen.exe`, la cartella `locales/`, `README.md` e `LICENSE`. La cartella `locales/` deve restare accanto all'eseguibile.
+This copies `Lumen.exe`, the `locales/` folder, the READMEs and `LICENSE`. The `locales/` folder must stay next to the executable.
 
 ---
 
-## 4. Uso
+## 4. Usage
 
-### Aggiungere un account
-1. Vai su **Account → Aggiungi account**.
-2. Lumen mostra un codice di 6 caratteri e apre `roblox.com/crossdevicelogin/ConfirmCode` nel browser predefinito.
-3. Se non hai già fatto l'accesso nel browser, accedi a roblox.com come fai di solito. Poi inserisci il codice e conferma alla domanda "Vuoi accedere…?".
-4. Lumen riceve la sessione, la cifra e aggiunge l'account. Il codice scade dopo pochi minuti: se scade, premi **Riprova**.
+### Adding an account
+1. Go to **Accounts → Add account**.
+2. Lumen shows a 6-character code and opens `roblox.com/crossdevicelogin/ConfirmCode` in your default browser.
+3. If you are not signed in to roblox.com in the browser yet, sign in as usual. Then enter the code and confirm the sign-in prompt.
+4. Lumen receives the session, encrypts it and adds the account. The code expires after a few minutes: if it does, press **Retry**.
 
-Se la sessione di un account scade, l'account mostra "Sessione scaduta" e il pulsante **Accedi di nuovo** ripete la stessa procedura.
+When an account's session expires, it shows "Session expired" and **Sign in again** repeats the same steps.
 
-### Avviare un gioco
-1. Cerca il gioco nella Home oppure aprilo dai recenti, dai preferiti o da "Per Te".
-2. Nella scheda del gioco scegli l'account e premi **Gioca**.
-3. Prima dell'avvio Lumen verifica che Roblox sia installato e che la sessione sia valida. Poi chiede a Roblox un ticket di accesso monouso e apre il client tramite il protocollo `roblox-player:`.
+### Launching a game
+1. Search for the game on Home, or open it from recent games, favorites or "For You".
+2. On the game page pick the account and press **Play**.
+3. Before launching, Lumen checks that Roblox is installed and that the session is valid. It then asks Roblox for a one-time authentication ticket and opens the client through the `roblox-player:` protocol.
 
-### Avviare più istanze
-1. In **Impostazioni → Istanze** attiva **Consenti più istanze**, poi scegli il numero massimo e il ritardo tra gli avvii.
-2. **Chiudi tutti i client Roblox** prima del primo avvio: Lumen deve "prendere" il blocco di istanza singola di Roblox prima che parta un client.
-3. Avvia lo stesso gioco, o giochi diversi, con account diversi. Ogni istanza compare in **Istanze**, dove puoi chiuderla.
+### Running several instances
+1. In **Settings → Instances** turn on **Allow multiple instances**, then choose the maximum and the delay between launches.
+2. **Close every Roblox client** before the first launch: Lumen has to take Roblox's single-instance lock before any client starts.
+3. Launch the same game, or different games, with different accounts. Each instance appears under **Instances**, where you can close it.
 
-Come funziona:
-- Roblox impedisce più client creando un mutex chiamato `ROBLOX_singletonMutex`. Lumen lo crea per primo e lo tiene aperto, così i client successivi non lo trovano occupato.
-- Lumen tiene anche aperto in sola lettura il file `%LOCALAPPDATA%\Roblox\LocalStorage\RobloxCookies.dat`. Così un client non può riscriverlo e disconnettere gli altri, perché ogni istanza riceve il proprio ticket.
-- Quando l'ultima istanza si chiude, Lumen rilascia entrambi.
+How it works:
+- Roblox prevents multiple clients by creating a mutex named `ROBLOX_singletonMutex`. Lumen creates it first and keeps it open, so later clients don't find it taken.
+- Lumen also keeps `%LOCALAPPDATA%\Roblox\LocalStorage\RobloxCookies.dat` open read-only, so one client cannot rewrite it and sign the others out; each instance gets its own ticket.
+- When the last instance closes, Lumen releases both.
 
-Questo è un comportamento **non ufficiale**: Roblox non supporta il multi-istanza e potrebbe cambiare il client in qualsiasi momento. Usalo nel rispetto dei Termini di Roblox.
+This is **unofficial** behavior: Roblox does not support multiple instances and may change the client at any time. Use it in accordance with the Roblox Terms of Use.
 
 ---
 
-## 5. Dove sono i dati e come cancellarli
+## 5. Where data is stored and how to delete it
 
-Tutti i dati stanno in `%LOCALAPPDATA%\Lumen\`. Se esiste la vecchia cartella `%LOCALAPPDATA%\RobloxLauncher\`, viene spostata qui al primo avvio.
+All data lives in `%LOCALAPPDATA%\Lumen\`. If the old `%LOCALAPPDATA%\RobloxLauncher\` folder exists, it is moved there on first start.
 
-| File / cartella | Contenuto |
+To use another folder (portable copy or separate profile), start `Lumen.exe --data-dir "D:\path\to\folder"`. Each data folder gets its own Lumen, independent from the regular one.
+
+| File / folder | Contents |
 |---|---|
-| `settings.json` | Impostazioni |
-| `accounts.json` | Account (metadati) e cookie **cifrati con DPAPI** |
-| `recent_games.json` | Cronologia dei giochi, usata da "Per Te" |
-| `favorites.json` | Preferiti |
-| `cache/thumbnails/` | Miniature scaricate, con un limite configurabile in MB |
-| `logs/` | Log a rotazione: 1 MB per file, 3 file. Cookie, ticket e token vengono oscurati |
+| `settings.json` | Settings |
+| `accounts.json` | Accounts (metadata) and cookies **encrypted with DPAPI** |
+| `recent_games.json` | Game history, used by "For You" |
+| `favorites.json` | Favorites |
+| `cache/thumbnails/` | Downloaded thumbnails, with a configurable size limit in MB |
+| `logs/` | Rotating logs: 1 MB per file, 3 files. Cookies, tickets and tokens are redacted |
 
-Il cookie si può decifrare solo **con lo stesso utente Windows sullo stesso PC**. Copiare `accounts.json` su un altro computer non serve a nulla: lì gli account vanno ricollegati.
+The cookie can only be decrypted **by the same Windows user on the same PC**. Copying `accounts.json` to another computer is useless: accounts must be signed in again there.
 
-**Per cancellare i dati**:
-- **Impostazioni → Dati e cache** permette di aprire la cartella dati, svuotare la cache, cancellare i giochi recenti o fare un **reset completo**: account, impostazioni, cronologia, preferiti e cache.
-- A mano: chiudi Lumen (anche dall'area di notifica) ed elimina la cartella `%LOCALAPPDATA%\Lumen\`.
-- Se avevi attivato "Avvia con Windows", disattivalo prima nelle impostazioni, oppure rimuovi il valore `Lumen` da `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`.
+**To delete the data**:
+- **Settings → Data and cache** opens the data folder, clears the cache, clears recent games, or performs a **full reset**: accounts, settings, history, favorites and cache.
+- By hand: quit Lumen (also from the notification area) and delete `%LOCALAPPDATA%\Lumen\`.
+- If you enabled "Start with Windows", turn it off in the settings first, or remove the `Lumen` value from `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`.
 
-Per revocare davvero una sessione anche lato Roblox, usa **roblox.com → Impostazioni → Sicurezza → Esci da tutte le altre sessioni**.
-
----
-
-## 6. Perché Dear ImGui
-
-- **Leggera e senza dipendenze pesanti**: un eseguibile unico di pochi MB, senza runtime esterni come Qt, .NET o WebView. Si compila allo stesso modo con MSVC e MinGW.
-- **Grafica moderna con poco codice**: il disegno è personalizzato (card, animazioni, temi scuro e chiaro, ridimensionamento DPI), quindi l'aspetto non dipende dai controlli di Windows.
-- **Rendering con DirectX 11**, sempre disponibile su Windows 10/11, e un loop "a riposo" che ridisegna solo quando serve, per non consumare CPU o GPU in background.
-- **Contro**: ImGui non gestisce l'accessibilità (screen reader) e il testo complesso (RTL) è limitato. Per un launcher di giochi in italiano e inglese è un compromesso accettabile.
+To really revoke a session on Roblox's side as well, use **roblox.com → Settings → Security → Log out of all other sessions**.
 
 ---
 
-## 7. Struttura del progetto
+## 6. Why Dear ImGui
+
+- **Light, no heavy dependencies**: a single executable of a few MB, with no external runtime such as Qt, .NET or WebView. It builds the same way with MSVC and MinGW.
+- **A modern look with little code**: drawing is fully custom (cards, animations, dark and light themes, DPI scaling), so the look doesn't depend on Windows controls.
+- **DirectX 11 rendering**, always available on Windows 10/11, with an idle loop that redraws only when needed, so it doesn't burn CPU or GPU in the background.
+- **Downsides**: ImGui has no accessibility support (screen readers) and limited complex-text (RTL) support. For a game launcher in English and Italian this is an acceptable trade-off.
+
+---
+
+## 7. Project structure
 
 ```
 RobloxLauncher/
 ├─ CMakeLists.txt, CMakePresets.json
-├─ cmake/                Dipendenze (FetchContent) e warning del compilatore
-├─ assets/               Icona, manifest (DPI, UTF-8), risorse di versione
-├─ locales/              it.json, en.json
+├─ cmake/                Dependencies (FetchContent) and compiler warnings
+├─ assets/               Icon, logo, manifest (DPI, UTF-8), version resources
+├─ locales/              en.json, it.json
 ├─ src/
-│  ├─ main.cpp           Istanza singola, DPI, COM, avvio
-│  ├─ app/               Application (composizione), finestra DX11, tray, dialoghi file
-│  ├─ core/              Log, percorsi, scrittura atomica, thread pool, errori, autostart
-│  ├─ settings/          Modello e persistenza delle impostazioni
-│  ├─ i18n/              Localizer: stringhe, plurali, numeri e date
-│  ├─ robloxapi/         Client WinHTTP, parser JSON, API Roblox con cache
-│  ├─ accounts/          Account, DPAPI, login rapido
-│  ├─ instances/         Ricerca di Roblox, avvio e monitoraggio dei client, multi-istanza
-│  ├─ games/             Recenti, preferiti, motore "Per Te", ricerca
-│  └─ ui/                Tema, font, widget, componenti, cache texture, schermate
-├─ tests/                Test unitari (doctest)
-├─ tools/                Script di supporto (generazione dell'icona)
+│  ├─ main.cpp           Single instance, command line, DPI, COM, startup
+│  ├─ app/               Application (composition root), DX11 window, tray, file dialogs
+│  ├─ core/              Logging, paths, atomic writes, thread pool, errors, autostart
+│  ├─ settings/          Settings model and persistence
+│  ├─ i18n/              Localizer: strings, plurals, numbers and dates
+│  ├─ robloxapi/         WinHTTP client, JSON parsers, cached Roblox APIs
+│  ├─ accounts/          Accounts, DPAPI, quick sign-in
+│  ├─ instances/         Roblox discovery, client launch and tracking, multi-instance
+│  ├─ games/             Recent games, favorites, "For You" engine, search
+│  └─ ui/                Theme, fonts, widgets, components, texture cache, screens
+├─ tests/                Unit tests (doctest)
+├─ tools/                Helper scripts (icon generation)
 └─ docs/screenshots/
 ```
 
-La UI non contiene logica di business: le schermate chiamano i servizi (`AccountService`, `GameService`, `InstanceManager`) e ricevono i risultati sul thread della UI attraverso una coda.
+The UI holds no business logic: screens call the services (`AccountService`, `GameService`, `InstanceManager`) and receive results on the UI thread through a queue.
 
 ---
 
-## 8. Limitazioni note
+## 8. Known limitations
 
-- **Non affiliato a Roblox Corporation.** Usa Lumen a tuo rischio e nel rispetto dei [Termini di utilizzo di Roblox](https://en.help.roblox.com/hc/articles/115004647846).
-- **API non documentate**:
-  - il login rapido usa gli endpoint di "Accedi con un altro dispositivo" (`auth-token-service`, `v2/login` con `AuthToken`);
-  - l'avvio usa `authentication-ticket` e il protocollo `roblox-player:`;
-  - la ricerca usa `omni-search` ed `explore-api`.
+- **Not affiliated with Roblox Corporation.** Use Lumen at your own risk and in accordance with the [Roblox Terms of Use](https://en.help.roblox.com/hc/articles/115004647846).
+- **Undocumented APIs**:
+  - quick sign-in uses the "Log in with another device" endpoints (`auth-token-service`, `v2/login` with `AuthToken`);
+  - launching uses `authentication-ticket` and the `roblox-player:` protocol;
+  - search uses `omni-search` and `explore-api`.
 
-  Sono gli stessi endpoint che usa il sito, ma non sono un'API pubblica ufficiale: Roblox può cambiarli o bloccarli in qualsiasi momento.
-- **Multi-istanza non ufficiale**: dipende dai nomi del mutex e del file dei cookie usati oggi dal client e può smettere di funzionare dopo un aggiornamento di Roblox. Se Roblox è già aperto quando avvii la prima istanza, il multi-istanza non è disponibile finché non chiudi tutti i client.
-- **Verifiche aggiuntive**: se Roblox chiede un captcha o una verifica in più durante il login, Lumen mostra un errore. Completa l'accesso sul sito e riprova.
-- Il rilevamento del processo avviato si basa sul nome `RobloxPlayerBeta.exe`. Con launcher di terze parti che rinominano il client, le istanze potrebbero non essere tracciate.
-- Solo Windows 10/11 a 64 bit. La build MSVC non è stata verificata in questo ambiente.
-- Nessuna accessibilità per screen reader (limite di Dear ImGui).
-
----
-
-## 9. Licenza
-
-Distribuito con licenza **MIT**: vedi [LICENSE](LICENSE).
-Le librerie di terze parti hanno le loro licenze: Dear ImGui (MIT), nlohmann/json (MIT), stb_image (MIT / pubblico dominio) e doctest (MIT).
+  These are the same endpoints the website uses, but they are not an official public API: Roblox may change or block them at any time.
+- **Unofficial multi-instance**: it depends on the mutex and cookie-file names the client uses today and may stop working after a Roblox update. If Roblox is already running when you launch the first instance, multi-instance is unavailable until you close every client.
+- **Extra verification**: if Roblox asks for a captcha or another check during sign-in, Lumen shows an error. Finish signing in on the website and try again.
+- Tracking the launched process relies on the `RobloxPlayerBeta.exe` name. With third-party launchers that rename the client, instances may not be tracked.
+- Windows 10/11 64-bit only. The MSVC build has not been verified yet.
+- No screen-reader accessibility (a Dear ImGui limitation).
 
 ---
 
-## 10. Crediti
+## 9. License
 
-- **Idea, requisiti e test sul campo**: [MytakGames](https://github.com/MytakGames).
-- **Sviluppo**: scritto da **Claude** (Claude Opus 5.5 di [Anthropic](https://www.anthropic.com)) con [Claude Code](https://claude.com/claude-code). Claude ha curato architettura, codice, test, icona e documentazione.
-- Librerie: [Dear ImGui](https://github.com/ocornut/imgui), [nlohmann/json](https://github.com/nlohmann/json), [stb](https://github.com/nothings/stb), [doctest](https://github.com/doctest/doctest).
+Released under the **MIT** license: see [LICENSE](LICENSE).
+Third-party libraries keep their own licenses: Dear ImGui (MIT), nlohmann/json (MIT), stb_image (MIT / public domain) and doctest (MIT).
+
+---
+
+## 10. Credits
+
+- **Idea, requirements and field testing**: [MytakGames](https://github.com/MytakGames).
+- **Development**: written by **Claude** (Claude Opus 5.5 by [Anthropic](https://www.anthropic.com)) with [Claude Code](https://claude.com/claude-code). Claude handled the architecture, code, tests, icon and documentation.
+- Libraries: [Dear ImGui](https://github.com/ocornut/imgui), [nlohmann/json](https://github.com/nlohmann/json), [stb](https://github.com/nothings/stb), [doctest](https://github.com/doctest/doctest).
